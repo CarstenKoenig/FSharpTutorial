@@ -36,14 +36,11 @@ with
 let updateIndexes (o: Outline) (h: Heading) = 
     match h.Weight with 
     | HW1 -> 
-        let indexes = { o.HeadingIndexes with Primary = o.HeadingIndexes.Primary + 1; Secondary = 1 ;Third = 1 }
-        { o with HeadingIndexes = indexes }
+        { o with HeadingIndexes = { o.HeadingIndexes with Primary = o.HeadingIndexes.Primary + 1; Secondary = 1 ;Third = 1 } }
     | HW2 -> 
-        let indexes = { o.HeadingIndexes with Secondary = o.HeadingIndexes.Secondary + 1; Third = 1 }
-        { o with HeadingIndexes = indexes }
+        { o with HeadingIndexes = { o.HeadingIndexes with Secondary = o.HeadingIndexes.Secondary + 1; Third = 1 } }
     | HW3 ->
-        let indexes = { o.HeadingIndexes with Third = o.HeadingIndexes.Third + 1 }
-        { o with HeadingIndexes = indexes }       
+        { o with HeadingIndexes = { o.HeadingIndexes with Third = o.HeadingIndexes.Third + 1 } }       
 
 let determineBulletStyle (hw: HeadingWeight) = 
     match hw with 
